@@ -21,10 +21,16 @@ def main():
 
     favorites_contract = boa.load("favorites.vy")
 
-    # starting_favorite_number = favorites_contract.retrieve()
+    starting_favorite_number = favorites_contract.retrieve()
+    print(f"Starting favorite number is: {starting_favorite_number}")
+
+    tx = favorites_contract.store(42, sender=my_account.address)
+
+    updated_favorite_number = favorites_contract.retrieve()
+    print(f"Updated favorite number is: {updated_favorite_number}")
     
     
-    # print("Deployment complete.")
+    print("Deployment complete.")
 
 
 if __name__ == "__main__":
